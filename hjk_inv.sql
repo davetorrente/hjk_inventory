@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2017 at 07:02 PM
+-- Generation Time: Oct 20, 2017 at 08:42 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -99,7 +99,7 @@ CREATE TABLE `products` (
 CREATE TABLE `sales` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `price` decimal(25,0) NOT NULL,
   `created` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
