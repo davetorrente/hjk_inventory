@@ -3,6 +3,15 @@
   require_once('../includes/load.php');
   include_once('../layouts/header.php');
   $logs = paginate('logs',10);
+  if(isset($_POST['clear_history'])){
+    if(delete_all('logs')){
+        $session->msg("s", 'Log History Cleared');
+        redirect('log.php',false);
+    }else{
+        $session->msg("d", 'Failed to clear log history');
+        redirect('log.php',false);
+    }
+  }
 ?>
 
   <div class="row">
@@ -12,6 +21,11 @@
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
+               <form method="post" class="clearfix">
+                 <div class="pull-right" style="padding-bottom: 10px">
+                     <button type="submit" name="clear_history" class="btn btn-danger">Clear Log History</button>
+                  </div>
+                </form>
                 <th> Log History </th>
                 <th class="text-center" style="width: 15%;"> Date </th>
              </tr>

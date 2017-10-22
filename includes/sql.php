@@ -85,6 +85,17 @@ function delete_by_id($table,$id)
     return (!empty($database->rowCount())) ? true : false;
   }
 }
+function delete_all($table)
+{
+  global $database;
+  if(tableExists($table))
+  {
+    $sql = "DELETE FROM ".$table;
+    $database->query($sql);
+    $database->execute();
+    return (!empty($database->rowCount())) ? true : false;
+  }
+}
 /*--------------------------------------------------------------*/
 /* Function for Count id  By table name
 /*--------------------------------------------------------------*/
