@@ -19,7 +19,7 @@
             <span>All Sales</span>
           </strong>
           <div class="pull-right">
-            <a href="add_sale.php" class="btn btn-primary">Add sale</a>
+            <a href="/admin/add_sale/" class="btn btn-primary">Add sale</a>
           </div>
         </div>
         <div class="panel-body">
@@ -45,10 +45,10 @@
                  <td class="text-center" style="width: 20%"><?php echo date("M j, Y g:i a",strtotime($sale['created']));?></td>
                  <td class="text-center">
                     <div class="btn-group">
-                       <a href="edit_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-warning btn-xs"  title="Edit" data-toggle="tooltip">
+                       <a href="/admin/edit_sale/?id=<?php echo (int)$sale['id'];?>" class="btn btn-warning btn-xs"  title="Edit" data-toggle="tooltip">
                          <span class="glyphicon glyphicon-edit"></span>
                        </a>
-                       <a href="delete_sale.php?id=<?php echo (int)$sale['id'];?>" class="btn btn-danger btn-xs"  title="Delete" data-toggle="tooltip">
+                       <a href="/admin/delete_sale/?id=<?php echo (int)$sale['id'];?>" class="btn btn-danger btn-xs"  title="Delete" data-toggle="tooltip">
                          <span class="glyphicon glyphicon-trash"></span>
                        </a>
                     </div>
@@ -66,7 +66,7 @@
             <div class="col col-xs-8">
                 <ul class="pagination hidden-xs pull-right">   
                   <?php for($i=1; $i<=$sales['count']; $i++): ?>
-                      <li><a href="sales.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                      <li><a href="/admin/sales/?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                   <?php endfor ?>
                 </ul>
                 <ul class="pagination visible-xs pull-right">

@@ -1,12 +1,12 @@
 <ul>
   <li>
-    <a href="dashboard.php">
+    <a href="/admin/dashboard/">
       <i class="glyphicon glyphicon-home"></i>
       <span>Dashboard</span>
     </a>
   </li>
   <li>
-    <a href="category.php" >
+    <a href="/admin/category/" >
      <i class="fa fa-cubes" style="width: 59.5px;"></i>
       <span>Categories</span>
     </a>
@@ -17,12 +17,12 @@
       <span>Products</span>
     </a>
     <ul class="nav submenu">
-       <li><a href="product.php">Manage products</a> </li>
-       <li><a href="add_product.php">Add product</a> </li>
+       <li><a href="/admin/product/">Manage products</a> </li>
+       <li><a href="/admin/add_product/">Add product</a> </li>
    </ul>
   </li>
   <li>
-    <a href="media.php" >
+    <a href="/admin/media/" >
       <i class="glyphicon glyphicon-picture"></i>
       <span>Medias</span>
     </a>
@@ -33,8 +33,8 @@
        <span style="margin-left: 5px;">Sales</span>
     </a>
     <ul class="nav submenu">
-      <li><a href="sales.php">Manage Sales</a> </li>
-      <li><a href="add_sale.php">Add Sale</a> </li>
+      <li><a href="/admin/sales/">Manage Sales</a> </li>
+      <li><a href="/admin/add_sale/">Add Sale</a> </li>
     </ul>
   </li>
  <li>
@@ -43,13 +43,13 @@
        <span>Sales Report</span>
       </a>
       <ul class="nav submenu">
-        <li><a href="sales_report.php">Sales by dates </a></li>
-        <li><a href="monthly_sales.php">Monthly sales</a></li>
-        <li><a href="daily_sales.php">Daily sales</a> </li>
+        <li><a href="/admin/sales_report/">Sales by dates </a></li>
+        <li><a href="/admin/monthly_sales/">Monthly sales</a></li>
+        <li><a href="/admin/daily_sales/">Daily sales</a> </li>
       </ul>
   </li>
    <li>
-    <a href="log.php" >
+    <a href="/admin/log/" >
       <i class="glyphicon glyphicon-pencil"></i>
       <span>Logs</span>
     </a>

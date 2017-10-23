@@ -54,7 +54,7 @@
             <div class="col col-xs-8">
                 <ul class="pagination hidden-xs pull-right">   
                   <?php for($i=1; $i<=$sales['count']; $i++): ?>
-                      <li><a href="daily_sales.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                      <li><a href="/admin/daily_sales/?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                   <?php endfor ?>
                 </ul>
                 <ul class="pagination visible-xs pull-right">

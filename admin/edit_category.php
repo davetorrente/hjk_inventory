@@ -5,7 +5,7 @@ require_once('../includes/load.php');
 $categorie = find_by_id('categories',(int)$_GET['id']);
 if(!$categorie){
   $session->msg("d","Missing categorie id.");
-  redirect('category.php');
+  redirect('/admin/category/');
 }
 
 if(isset($_POST['edit_cat'])){
@@ -24,23 +24,23 @@ if(isset($_POST['edit_cat'])){
         if($database->rowCount() === 1) {
             log_history('Category '.$categorie['name'].' has been updated to '.$cat_name);
             $session->msg("s", "Successfully updated Category");
-            redirect('category.php',false);
+            redirect('/admin/category/',false);
         } else {
             $session->msg("d", "Sorry! Failed to Update");
-           redirect('edit_category.php?id='.$categorie['id'], false);
+           redirect('/admin/edit_category/?id='.$categorie['id'], false);
         }
       }else{
         if($db_categ[0]['name'] == $categorie['name']){
           $session->msg("i", 'Same Category Name');
-          redirect('edit_category.php?id='.$categorie['id'], false);
+          redirect('/admin/edit_category/?id='.$categorie['id'], false);
         }else{
           $session->msg("d", 'Category Name already exists');
-          redirect('edit_category.php?id='.$categorie['id'], false);
+          redirect('/admin/edit_category/?id='.$categorie['id'], false);
         }
       }
     }else{
     $session->msg("d", $errors);
-    redirect('edit_category.php?id='.$categorie['id'], false);
+    redirect('/admin/edit_category/?id='.$categorie['id'], false);
   }
 }
 include_once('../layouts/header.php');
@@ -59,7 +59,7 @@ include_once('../layouts/header.php');
         </strong>
       </div>
       <div class="panel-body">
-        <form method="post" action="edit_category.php?id=<?php echo (int)$categorie['id'];?>">
+        <form method="post" action="/admin/edit_category/?id=<?php echo (int)$categorie['id'];?>">
           <div class="form-group">
             <input type="text" class="form-control" name="categorie-name" value="<?php echo remove_junk(ucfirst($categorie['name']));?>">
           </div>

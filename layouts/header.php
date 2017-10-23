@@ -35,13 +35,13 @@
             </a>
             <ul class="dropdown-menu">
              <li>
-                 <a href="edit_account.php">
+                 <a href="/admin/edit_account/">
                      <i class="glyphicon glyphicon-cog"></i>
                      Settings
                  </a>
              </li>
              <li class="last">
-                 <a href="../auth/logout.php">
+                 <a href="/auth/logout.php">
                      <i class="glyphicon glyphicon-off"></i>
                      Logout
                  </a>

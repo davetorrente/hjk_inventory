@@ -8,7 +8,7 @@
     $user_id = $_POST['user_id'];
     if (empty($_FILES["file_upload"]['name'])) {
         $session->msg('d', 'Image is required');
-        redirect('edit_account.php');
+        redirect('/admin/edit_account/');
     }else{
       $file = $_FILES['file_upload'];
       $newFile = '';
@@ -29,7 +29,7 @@
       if($database->rowCount() === 1){
         log_history("You've change your profile photo");
         $session->msg("s", "Successfully Added User Photo");
-        redirect('edit_account.php',false);
+        redirect('/admin/edit_account/',false);
       }
     }
   }
@@ -47,14 +47,14 @@
       $database->execute();
       if($database->rowCount() === 1){
         $session->msg('s',"Acount updated ");
-        redirect('edit_account.php', false);
+        redirect('/admin/edit_account/', false);
       } else {
         $session->msg('d',' Sorry failed to updated!');
-        redirect('edit_account.php', false);
+        redirect('/admin/edit_account/', false);
       }
     }else {
       $session->msg("d", $errors);
-      redirect('edit_account.php',false);
+      redirect('/admin/edit_account/',false);
     }
   }
 ?>
@@ -81,7 +81,7 @@
               <?php endif; ?>  
             </div>
             <div class="col-md-8">
-              <form class="form" action="edit_account.php" method="POST" enctype="multipart/form-data">
+              <form class="form" action="/admin/edit_account/" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <input type="file" name="file_upload" multiple="multiple" class="btn btn-default btn-file"/>
               </div>
@@ -102,13 +102,13 @@
         <span>Edit My Account</span>
       </div>
       <div class="panel-body">
-          <form method="post" action="edit_account.php?id=<?php echo (int)$user['id'];?>" class="clearfix">
+          <form method="post" action="/admin/edit_account/?id=<?php echo (int)$user['id'];?>" class="clearfix">
             <div class="form-group">
                   <label for="username" class="control-label">Username</label>
                   <input type="text" class="form-control" name="username" value="<?php echo remove_junk(ucwords($user['username'])); ?>">
             </div>
             <div class="form-group clearfix">
-                    <a href="change_password.php" title="change password" class="btn btn-danger pull-right">Change Password</a>
+                    <a href="/admin/change_password/" title="change password" class="btn btn-danger pull-right">Change Password</a>
                     <button type="submit" name="update" class="btn btn-info">Update</button>
             </div>
         </form>

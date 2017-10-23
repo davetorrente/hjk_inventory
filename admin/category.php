@@ -19,15 +19,18 @@ if(isset($_POST['add_cat'])){
           if($database->execute()){
               log_history('Category '.$cat_name.' has been added');
               $session->msg("s", "Successfully Added Category");
-              redirect('category.php',false);
+              redirect('/admin/category/',false);
           } else {
             $session->msg("d", "Sorry Failed to add category.");
-            redirect('category.php',false);
+            redirect('/admin/category/',false);
           }
       }else{
         $session->msg("d", 'Category Name already exists');
-        redirect('category.php',false);
+        redirect('/admin/category/',false);
       }
+    }else{
+        $session->msg("d", $errors);
+        redirect('/admin/category/',false);
     }         
 }
 
@@ -48,7 +51,7 @@ if(isset($_POST['add_cat'])){
        </strong>
       </div>
       <div class="panel-body">
-        <form method="post" action="category.php">
+        <form method="post" action="/admin/category/">
           <div class="form-group">
               <input type="text" class="form-control" name="category-name" placeholder="Category Name">
           </div>
@@ -82,10 +85,10 @@ if(isset($_POST['add_cat'])){
                       <td><?php echo remove_junk(ucfirst($cat['name'])); ?></td>
                       <td class="text-center">
                         <div class="btn-group">
-                          <a href="edit_category.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
+                          <a href="/admin/edit_category/?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
                             <span class="glyphicon glyphicon-edit"></span>
                           </a>
-                          <a href="delete_category.php?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
+                          <a href="/admin/delete_category/?id=<?php echo (int)$cat['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
                             <span class="glyphicon glyphicon-trash"></span>
                           </a>
                         </div>
@@ -103,7 +106,7 @@ if(isset($_POST['add_cat'])){
             <div class="col col-xs-8">
                 <ul class="pagination hidden-xs pull-right">   
                   <?php for($i=1; $i<=$all_categories['count']; $i++): ?>
-                      <li><a href="category.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                      <li><a href="/admin/category/?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                   <?php endfor ?>
                 </ul>
                 <ul class="pagination visible-xs pull-right">

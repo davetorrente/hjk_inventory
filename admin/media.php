@@ -6,7 +6,7 @@ $media_files = paginate('medias',5);
   if(isset($_POST['submit'])) {
    if (empty($_FILES["file_upload"]['name'])) {
         $session->msg('d', 'Image is required');
-        redirect('media.php');
+        redirect('/admin/media/');
     }else{
       $file = $_FILES['file_upload'];
       $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
@@ -24,11 +24,11 @@ $media_files = paginate('medias',5);
           if($database->execute()){
             log_history("You've added ".$moveFile.' to media');
             $session->msg("s", "Successfully Added Media");
-            redirect('media.php',false);
+            redirect('/admin/media/',false);
           }
         }else{
           $session->msg("d", "Media Photo already exists");
-          redirect('media.php',false);
+          redirect('/admin/media/',false);
         }
       }
     }
@@ -44,7 +44,7 @@ $media_files = paginate('medias',5);
         <span class="glyphicon glyphicon-camera"></span>
         <span>All Photos</span>
         <div class="pull-right">
-          <form class="form-inline" action="media.php" method="POST" enctype="multipart/form-data">
+          <form class="form-inline" action="/admin/media/" method="POST" enctype="multipart/form-data">
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-btn">
@@ -73,7 +73,7 @@ $media_files = paginate('medias',5);
               <tr class="list-inline">
                <td class="text-center"><?php echo $media_file['id'];?></td>
                 <td class="text-center">
-                    <img src="../assets/images/products/<?php echo $media_file['file_name'];?>" class="img-thumbnail" />
+                    <img src="/assets/images/products/<?php echo $media_file['file_name'];?>" class="img-thumbnail" />
                 </td>
               <td class="text-center">
                 <?php echo $media_file['file_name'];?>
@@ -82,7 +82,7 @@ $media_files = paginate('medias',5);
                 <?php echo $media_file['file_type'];?>
               </td>
               <td class="text-center">
-                <a href="delete_media.php?id=<?php echo (int) $media_file['id'];?>" class="btn btn-danger btn-xs"  title="Edit">
+                <a href="/admin/delete_media/?id=<?php echo (int) $media_file['id'];?>" class="btn btn-danger btn-xs"  title="Edit">
                   <span class="glyphicon glyphicon-trash"></span>
                 </a>
               </td>
@@ -99,7 +99,7 @@ $media_files = paginate('medias',5);
             <div class="col col-xs-8">
                 <ul class="pagination hidden-xs pull-right">   
                   <?php for($i=1; $i<=$media_files['count']; $i++): ?>
-                      <li><a href="media.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                      <li><a href="/admin/media/?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                   <?php endfor ?>
                 </ul>
                 <ul class="pagination visible-xs pull-right">

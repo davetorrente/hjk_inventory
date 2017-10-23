@@ -15,25 +15,25 @@
       $new = remove_junk(sha1($_POST['new-password']));
       if(sha1($_POST['old-password']) !== current_user()['password']){
         $session->msg('d', "Your old password not match");
-        redirect('change_password.php',false);
+        redirect('/admin/change_password/',false);
       }
       if($new == current_user()['password']){
         $session->msg('d', "Same password");
-        redirect('change_password.php',false);
+        redirect('/admin/change_password/',false);
       }
       $database->query("UPDATE users SET password ='{$new}' WHERE id='{$id}'");
       $database->execute();
       if($database->rowCount() === 1){  
         log_history("You've change your password!");
         $session->msg('s',"Login with your new password.");
-        redirect('edit_account.php', false);
+        redirect('/admin/edit_account/', false);
       }else{
             $session->msg('d',' Sorry failed to updated!');
-            redirect('change_password.php', false);
+            redirect('/admin/change_password/', false);
           }
     } else {
       $session->msg("d", $errors);
-      redirect('change_password.php',false);
+      redirect('/admin/change_password/',false);
     }
   }
 ?>
@@ -42,7 +42,7 @@
      <h3>Change your password</h3>
    </div>
      <?php echo display_msg($msg); ?>
-      <form method="post" action="change_password.php" class="clearfix">
+      <form method="post" action="/admin/change_password/" class="clearfix">
        <div class="form-group">
               <label for="oldPassword" class="control-label">Old password</label>
               <input type="password" class="form-control" name="old-password" placeholder="Old password">

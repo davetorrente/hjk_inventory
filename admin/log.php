@@ -6,10 +6,10 @@
   if(isset($_POST['clear_history'])){
     if(delete_all('logs')){
         $session->msg("s", 'Log History Cleared');
-        redirect('log.php',false);
+        redirect('/admin/log/',false);
     }else{
         $session->msg("d", 'Failed to clear log history');
-        redirect('log.php',false);
+        redirect('/admin/log/',false);
     }
   }
 ?>
@@ -50,7 +50,7 @@
             <div class="col col-xs-8">
                 <ul class="pagination hidden-xs pull-right">   
                   <?php for($i=1; $i<=$logs['count']; $i++): ?>
-                      <li><a href="log.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                      <li><a href="/admin/log/?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                   <?php endfor ?>
                 </ul>
                 <ul class="pagination visible-xs pull-right">

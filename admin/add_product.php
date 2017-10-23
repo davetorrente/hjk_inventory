@@ -35,19 +35,19 @@
               $db_photo = !empty($p_photo) ? ' and photo '.$p_photo.' ' : ' ';
               log_history('Product '.$p_name.' under category '.$db_category[0]['name'].' with quantity '.$p_qty.', buy price &#8369;'.$p_buy.', selling price of &#8369;'.$p_sale.$db_photo.'has been added');
               $session->msg("s", "Successfully Added Product");
-              redirect('product.php',false);
+              redirect('/admin/product/',false);
             }else {
               $session->msg('d',' Sorry failed to added!');
-              redirect('product.php', false);
+              redirect('/admin/product/', false);
              }
         }else{
             $session->msg("d", 'Product name already exists');
-            redirect('add_product.php',false);
+            redirect('/admin/add_product/',false);
         }
        
       }else{
         $session->msg("d", $errors);
-        redirect('add_product.php',false);
+        redirect('/admin/add_product/',false);
       }
   }
  

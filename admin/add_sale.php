@@ -13,32 +13,32 @@
           $result =checkQty($p_id);
           if($s_qty <= 0){
             $session->msg('d','Quantity must be greater than 0!');
-            redirect('add_sale.php', false);
+            redirect('/admin/add_sale/', false);
           }
           if($s_qty > $result){
             $session->msg('d','Not enough stock!');
-            redirect('add_sale.php', false);
+            redirect('/admin/add_sale/', false);
           }
           $database->query("INSERT INTO sales (product_id,quantity,price,created) VALUES('{$p_id}','{$s_qty}','{$s_total}','{$date}')");
           if($database->execute()){
               $prod_name = update_product_qty($s_qty,$p_id);
               log_history('Sales Product '.$prod_name.' with quantity '.$s_qty.', and total of &#8369;'.$s_total.' has been added');
               $session->msg('s',"Sale added. ");
-              redirect('add_sale.php', false);
+              redirect('/admin/add_sale/', false);
           }else {
             $session->msg('d',' Sorry failed to add!');
-            redirect('add_sale.php', false);
+            redirect('/admin/add_sale/', false);
           }
       }else {
           $session->msg("d", $errors);
-          redirect('add_sale.php',false);
+          redirect('/admin/add_sale/',false);
       }
     }
 ?>
 <div class="row">
   <div class="col-md-6">
    <?php echo display_msg($msg); ?>
-    <form method="post" action="ajax.php" autocomplete="off" id="sug-form">
+    <form method="post" action="/admin/ajax.php" autocomplete="off" id="sug-form">
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-btn">
@@ -61,7 +61,7 @@
        </strong>
       </div>
       <div class="panel-body">
-        <form method="post" action="add_sale.php">
+        <form method="post" action="/admin/add_sale/">
          <table class="table table-bordered">
            <thead>
             <th> Item </th>

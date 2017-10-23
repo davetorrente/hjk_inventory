@@ -1,5 +1,4 @@
-<?php include_once('../includes/load.php'); ?>
-<?php
+<?php include_once('../includes/load.php');
 $req_fields = array('username','password' );
 validate_fields($req_fields);
 $username = remove_junk($_POST['username']);
@@ -13,11 +12,11 @@ if(empty($errors)){
         //Update Sign in time
          updateLastLogIn($user_id);
          $session->msg("s", "Welcome to HJK Hardware");
-         redirect('../admin/dashboard.php',false);
+         redirect('/admin/dashboard/',false);
 
     }else{
         $session->msg("d", "Sorry Username/Password incorrect.");
-        redirect('login.php',false);
+        redirect('/auth/login/',false);
     }
 
 }else{

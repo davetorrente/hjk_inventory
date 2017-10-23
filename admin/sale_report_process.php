@@ -14,11 +14,11 @@ $results = '';
       $_SESSION['end_date']   = $end_date;
     else:
       $session->msg("d", $errors);
-      redirect('sales_report.php', false);
+      redirect('/admin/sales_report/', false);
     endif;
   }else {
     $session->msg("d", "Select dates");
-    redirect('sales_report.php', false);
+    redirect('/admin/sales_report/', false);
   }
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $results = '';
 </head>
 <body>
   <?php if($results): ?>
-  <form name="getcvs" action="sale_report_csv.php" method="POST"> 
+  <form name="getcvs" action="/admin/sale_report_csv/" method="POST"> 
     <div class="page-break">
     <div class="pull-right">
        <div class="sale-head ">
@@ -41,6 +41,7 @@ $results = '';
        </div>
        <div id="reportBtn">
        <input type="submit" name="submit" value="Download CSV file" class="input-button btn btn-warning" /> 
+       <a href="/admin/sales_report/" class="input-button btn btn-info">Back</a> 
        </div>
      </div>
       <table class="table table-border">
@@ -88,7 +89,7 @@ $results = '';
   <?php
     else:
         $session->msg("d", "Sorry no sales has been found. ");
-        redirect('sales_report.php', false);
+        redirect('/admin/sales_report/', false);
      endif;
   ?>
 </body>

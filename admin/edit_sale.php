@@ -7,7 +7,7 @@
 $sale = find_by_id('sales',(int)$_GET['id']);
 if(!$sale){
   $session->msg("d","Missing product id.");
-  redirect('sales.php');
+  redirect('/admin/sales/');
 }
 ?>
 <?php $product = find_by_id('products',$sale['product_id']); ?>
@@ -29,11 +29,11 @@ if(!$sale){
           $result =checkQty($p_id);
           if($s_qty <= 0){
             $session->msg('d','Quantity must be greater than 0!');
-            redirect('edit_sale.php?id='.$sale['id'], false);
+            redirect('/admin/edit_sale/?id='.$sale['id'], false);
           }
           if($s_qty > $result && $s_qty != $sale['quantity'] ){
             $session->msg('d','Not enough stock!');
-            redirect('edit_sale.php?id='.$sale['id'], false);
+            redirect('/admin/edit_sale/?id='.$sale['id'], false);
           }
           $database->query($sql);
           $database->execute();
@@ -44,14 +44,14 @@ if(!$sale){
             $prod_name = update_product_qty($s_qty,$p_id);
             log_history('Sales Product '.$prod_name.' with quantity '.$s_qty.', and total of &#8369;'.$s_total.' has been added');
             $session->msg('s',"Sale updated.");
-            redirect('sales.php', false);
+            redirect('/admin/sales/', false);
           } else {
             $session->msg('d',' Sorry failed to updated!');
-            redirect('sales.php', false);
+            redirect('/admin/sales/', false);
           }
         } else {
            $session->msg("d", $errors);
-           redirect('edit_sale.php?id='.(int)$sale['id'],false);
+           redirect('/admin/edit_sale/id='.(int)$sale['id'],false);
         }
   }
 
@@ -71,7 +71,7 @@ if(!$sale){
         <span>All Sales</span>
      </strong>
      <div class="pull-right">
-       <a href="sales.php" class="btn btn-primary">Show all sales</a>
+       <a href="/admin/sales/" class="btn btn-primary">Show all sales</a>
      </div>
     </div>
     <div class="panel-body">
@@ -86,7 +86,7 @@ if(!$sale){
          </thead>
            <tbody  id="product_info">
               <tr>
-              <form method="post" action="edit_sale.php?id=<?php echo (int)$sale['id']; ?>">
+              <form method="post" action="/admin/edit_sale/?id=<?php echo (int)$sale['id']; ?>">
                 <td id="s_name">
                   <input type="text" class="form-control" id="sug_input" name="title" value="<?php echo remove_junk($product['name']); ?>">
                   <div id="result" class="list-group"></div>

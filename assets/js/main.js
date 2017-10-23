@@ -27,7 +27,7 @@ function suggestion() {
            // process the form
            $.ajax({
                type        : 'POST',
-               url         : 'ajax.php',
+               url         : '/admin/ajax.php',
                data        : formData,
                dataType    : 'json',
                encode      : true
@@ -65,7 +65,7 @@ function suggestion() {
         // process the form
         $.ajax({
             type        : 'POST',
-            url         : 'ajax.php',
+            url         : '/admin/ajax.php',
             data        : formData,
             dataType    : 'json',
             encode      : true

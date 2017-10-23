@@ -5,7 +5,7 @@
   $product = find_by_id('products',(int)$_GET['id']);
   if(!$product){
     $session->msg("d","Missing Product id.");
-    redirect('product.php');
+    redirect('/admin/product/');
   }
 ?>
 <?php
@@ -13,9 +13,9 @@
   if($delete_id){
       log_history('Product '.$product['name'].' has been deleted');
       $session->msg("s","Products deleted.");
-      redirect('product.php');
+      redirect('/admin/product/');
   } else {
       $session->msg("d","Products deletion failed.");
-      redirect('product.php');
+      redirect('/admin/product/');
   }
 ?>

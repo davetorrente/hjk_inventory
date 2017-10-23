@@ -22,8 +22,55 @@
    <div class="col-md-12">
       <div class="panel">
         <div class="jumbotron text-center">
-           <h1>!</h1>
-           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <div class="container">
+            <div class="carousel slide" id="myCarousel" data-ride="carousel">
+              <div class="carousel-inner">
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                 <li data-target="#myCarousel" data-slide-to="4"></li>
+              </ol>
+                <div class="item active" >
+                  <img src="/assets/images/banner/hjk1.jpg" class="img-responsive col-md-12">
+                  <!-- <div class="carousel-caption">
+                    <h2>Yo ninjas adfasdfasdfasdf</h2>
+                  </div> -->
+                </div>
+                <div class="item">
+                  <img src="/assets/images/banner/hjk2.jpg" class="img-responsive col-md-12">
+                  <!-- <div class="carousel-caption">
+                    <h2>Yo ninjas adfasdfasdfasdf</h2>
+                  </div> -->
+                </div>
+                <div class="item">
+                  <img src="/assets/images/banner/hjk3.jpg" class="img-responsive col-md-12">
+                  <!-- <div class="carousel-caption">
+                    <h2>Yo ninjas adfasdfasdfasdf</h2>
+                  </div> -->
+                </div>  
+                <div class="item">
+                  <img src="/assets/images/banner/hjk4.jpg" class="img-responsive col-md-12">
+                  <!-- <div class="carousel-caption">
+                    <h2>Yo ninjas adfasdfasdfasdf</h2>
+                  </div> -->
+                </div>  
+                <div class="item">
+                  <img src="/assets/images/banner/hjk5.jpg" class="img-responsive col-md-12">
+                 <!--  <div class="carousel-caption">
+                    <h2>Yo ninjas adfasdfasdfasdf</h2>
+                  </div> -->
+                </div>  
+              </div>  
+              <a href="#myCarousel" class="right carousel-control" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+              <a href="#myCarousel" class="left carousel-control" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+          </div>
+          </div>
         </div>
       </div>
    </div>
@@ -117,7 +164,7 @@
               <tr>
                 <td class="text-center"><?php echo count_id();?></td>
                 <td>
-                  <a href="edit_sale.php?id=<?php echo (int)$recent_sale['id']; ?>">
+                  <a href="/admin/edit_sale/?id=<?php echo (int)$recent_sale['id']; ?>">
                     <?php echo remove_junk(first_character($recent_sale['name'])); ?>
                   </a>
                 </td>
@@ -161,7 +208,7 @@
                     <?php endif;?>
                    </td>
                    <td class="text-center" style="width:250px;position: relative; top: 30px;">
-                    <a href="edit_product.php?id=<?php echo (int)$recent_prod['id']; ?>">
+                    <a href="/admin/edit_product/?id=<?php echo (int)$recent_prod['id']; ?>">
                      <?php echo remove_junk(first_character($recent_prod['name'])); ?>
                    </a>
                    </td>
@@ -180,3 +227,22 @@
 </div>
 
 <?php include_once('../layouts/footer.php'); ?>
+<script type="text/javascript">
+    $(function(){
+      $('.carousel').carousel({
+        interval: 2500,
+        // pause: false,
+        //wrap: false, //di na babalik sa unang slide
+        keyboard:true
+      })
+    })
+</script>
+<style>
+img.img-responsive.col-md-12{
+  height: 100% !important;
+  width: 100% !important;
+}
+.item{
+  height: 300px !important;
+}
+</style>

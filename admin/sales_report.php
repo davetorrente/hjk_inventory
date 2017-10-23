@@ -15,7 +15,7 @@ $page_title = 'Sale Report';
 
       </div>
       <div class="panel-body">
-          <form class="clearfix" method="post" action="sale_report_process.php">
+          <form class="clearfix" method="post" action="/admin/sale_report_process/">
             <div class="form-group">
               <label class="form-label">Date Range</label>
                 <div class="input-group">

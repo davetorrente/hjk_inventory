@@ -11,10 +11,10 @@
   $photo->upload($_FILES['file_upload']);
   if($photo->process_user($user_id)){
     $session->msg('s','photo has been uploaded.');
-    redirect('edit_account.php');
+    redirect('/admin/edit_account/');
     } else{
       $session->msg('d',join($photo->errors));
-      redirect('edit_account.php');
+      redirect('/admin/edit_account/');
     }
   }
 ?>
@@ -31,14 +31,14 @@
     $result = $db->query($sql);
           if($result && $db->affected_rows() === 1){
             $session->msg('s',"Acount updated ");
-            redirect('edit_account.php', false);
+            redirect('/admin/edit_account/', false);
           } else {
             $session->msg('d',' Sorry failed to updated!');
-            redirect('edit_account.php', false);
+            redirect('/admin/edit_account/', false);
           }
     } else {
       $session->msg("d", $errors);
-      redirect('edit_account.php',false);
+      redirect('/admin/edit_account/',false);
     }
   }
 ?>
@@ -61,7 +61,7 @@
                 <img class="img-circle img-size-2" src="uploads/users/<?php echo $user['image'];?>" alt="">
             </div>
             <div class="col-md-8">
-              <form class="form" action="edit_account.php" method="POST" enctype="multipart/form-data">
+              <form class="form" action="/admin/edit_account/" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <input type="file" name="file_upload" multiple="multiple" class="btn btn-default btn-file"/>
               </div>
@@ -82,7 +82,7 @@
         <span>Edit My Account</span>
       </div>
       <div class="panel-body">
-          <form method="post" action="edit_account.php?id=<?php echo (int)$user['id'];?>" class="clearfix">
+          <form method="post" action="/admin/edit_account/?id=<?php echo (int)$user['id'];?>" class="clearfix">
             <div class="form-group">
                   <label for="name" class="control-label">Name</label>
                   <input type="name" class="form-control" name="name" value="<?php echo remove_junk(ucwords($user['name'])); ?>">
@@ -92,7 +92,7 @@
                   <input type="text" class="form-control" name="username" value="<?php echo remove_junk(ucwords($user['username'])); ?>">
             </div>
             <div class="form-group clearfix">
-                    <a href="change_password.php" title="change password" class="btn btn-danger pull-right">Change Password</a>
+                    <a href="/admin/change_password/" title="change password" class="btn btn-danger pull-right">Change Password</a>
                     <button type="submit" name="update" class="btn btn-info">Update</button>
             </div>
         </form>

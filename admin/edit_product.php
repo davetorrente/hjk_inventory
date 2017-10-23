@@ -7,7 +7,7 @@
   $all_photo = find_all('medias');
   if(!$product){
     $session->msg("d","Missing product id.");
-    redirect('product.php');
+    redirect('/admin/product/');
   }
 
   if(isset($_POST['product'])){
@@ -41,10 +41,10 @@
         if($database->rowCount() === 1) {
           log_history($product['name'].' has been updated to '.$p_name. ' under category '.$p_cat.' with quantity'.$p_qty.', buying price of &#8369;'.$p_buy.' selling price of &#8369;'.$p_sale.$db_photo );
           $session->msg("s", "Successfully updated Product");
-          redirect('product.php',false);
+          redirect('/admin/product/',false);
         }else {
           $session->msg('d',' Sorry failed to updated!');
-          redirect('edit_product.php?id='.$product['id'], false);
+          redirect('/admin/edit_product/?id='.$product['id'], false);
         }
       }else{
         if($db_prod[0]['name'] == $product['name']){
@@ -57,19 +57,19 @@
           if($database->rowCount() === 1) {
             log_history($product['name'].' has been updated to '.$p_name. ' under category '.$p_cat.' with quantity'.$p_qty.', buying price of &#8369;'.$p_buy.' selling price of &#8369;'.$p_sale.$db_photo);
             $session->msg("s", "Successfully updated Product");
-            redirect('product.php',false);
+            redirect('/admin/product/',false);
           }
           $session->msg("s", "Successfully updated Product");
-          redirect('product.php',false);
+          redirect('/admin/product/',false);
         }else{
           $session->msg("d", 'Product Name already exists');
-          redirect('edit_product.php?id='.$product['id'], false);
+          redirect('/admin/edit_product/?id='.$product['id'], false);
         }
       }
       
     }else{
        $session->msg("d", $errors);
-       redirect('edit_product.php?id='.$product['id'], false);
+       redirect('/admin/edit_product/?id='.$product['id'], false);
     }
   }
 
@@ -90,7 +90,7 @@
         </div>
         <div class="panel-body">
          <div class="col-md-7">
-           <form method="post" action="edit_product.php?id=<?php echo (int)$product['id'] ?>">
+           <form method="post" action="/admin/edit_product/?id=<?php echo (int)$product['id'] ?>">
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">

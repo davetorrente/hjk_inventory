@@ -12,7 +12,7 @@
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <div class="pull-right">
-          <a href="add_product.php" class="btn btn-primary">Add New</a>
+          <a href="/admin/add_product/" class="btn btn-primary">Add New</a>
         </div>
       </div>
       <div class="panel-body">
@@ -37,9 +37,9 @@
                 <td class="text-center"><?php echo $product['id'];?></td>
                 <td class="text-center">
                   <?php if($product['media_id'] === '0'): ?>
-                    <img class="img-avatar img-circle" src="../assets/images/products/default_product.png" alt="">
+                    <img class="img-avatar img-circle" src="/assets/images/products/default_product.png" alt="">
                   <?php else: ?>
-                  <img class="img-avatar img-circle" src="../assets/images/products/<?php echo $product['image']; ?>" alt="">
+                  <img class="img-avatar img-circle" src="/assets/images/products/<?php echo $product['image']; ?>" alt="">
                 <?php endif; ?>
                 </td>
                 <td> <?php echo remove_junk($product['name']); ?></td>
@@ -50,10 +50,10 @@
                 <td class="text-center"> <?php echo date("M j, Y g:i a",strtotime($product['created'])); ?></td>
                 <td class="text-center">
                   <div class="btn-group">
-                    <a href="edit_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-info btn-xs"  title="Edit" data-toggle="tooltip">
+                    <a href="/admin/edit_product/?id=<?php echo (int)$product['id'];?>/" class="btn btn-info btn-xs"  title="Edit" data-toggle="tooltip">
                       <span class="glyphicon glyphicon-edit"></span>
                     </a>
-                    <a href="delete_product.php?id=<?php echo (int)$product['id'];?>" class="btn btn-danger btn-xs"  title="Delete" data-toggle="tooltip">
+                    <a href="/admin/delete_product/?id=<?php echo (int)$product['id'];?>/" class="btn btn-danger btn-xs"  title="Delete" data-toggle="tooltip">
                       <span class="glyphicon glyphicon-trash"></span>
                     </a>
                   </div>
@@ -71,7 +71,7 @@
             <div class="col col-xs-8">
                 <ul class="pagination hidden-xs pull-right">   
                   <?php for($i=1; $i<=$products['count']; $i++): ?>
-                      <li><a href="product.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                      <li><a href="/admin/product/?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                   <?php endfor ?>
                 </ul>
                 <ul class="pagination visible-xs pull-right">
